@@ -1,6 +1,6 @@
 from PIL import Image
 from numpy import array
-from selection import write, write_opposite, encrypt
+from selection import write, write_opposite, write_colour, encrypt
 import struct
 
 with open("message.txt", "rb") as f:
@@ -31,7 +31,7 @@ for y in range(Y_SIZE):
         if not write(x,y):
             continue
         reverse = write_opposite(x,y)
-        for c in (0,1,2):
+        for c in write_colour(x,y):
             b = get_bit(pos)
             if b == -1:
                 exit_loop = True

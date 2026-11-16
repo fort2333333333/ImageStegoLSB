@@ -30,6 +30,13 @@ def is_prime(num : int):
 def write(para1 : int, para2 : int) -> bool:
     return is_prime(para1^para2)
 
+def write_colour(para1 : int, para2 : int) -> tuple[int]:
+    if para1 % 3 == 0:
+        return (0,)
+    if para2 % 3 == 0:
+        return (1,)
+    return (2,)
+
 def write_opposite(para1 : int, para2 : int) -> bool:
     return False
 

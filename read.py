@@ -1,6 +1,6 @@
 from PIL import Image
 from numpy import array
-from selection import write, write_opposite, decrypt
+from selection import write, write_opposite, write_colour, decrypt
 
 IMAGE = Image.open("processed.png")
 IMAGE = array(IMAGE)
@@ -14,7 +14,7 @@ for y in range(Y_SIZE):
         if not write(x,y):
             continue
         reverse = write_opposite(x,y)
-        for c in (0,1,2):
+        for c in write_colour(x,y):
             bit = bool(IMAGE[y,x,c] & 0b1)
             if reverse: bit ^= 1
             bits_list.append(bit)
